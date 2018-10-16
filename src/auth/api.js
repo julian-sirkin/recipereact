@@ -3,7 +3,7 @@ const apiUrl = 'http://localhost:4741'
 export const handleErrors = res => {
   if (res.ok) {
     return res
-  } else  {
+  } else {
     throw new Error('Recieved status in 400 or 500 range.')
   }
 }
@@ -44,7 +44,7 @@ export const signOut = user => {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization':`Token token=${user.token}`
+      'Authorization': `Token token=${user.token}`
     }
   })
 }
@@ -54,7 +54,7 @@ export const changePassword = (passwords, user) => {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization':`Token token=${user.token}`
+      'Authorization': `Token token=${user.token}`
     },
     body: JSON.stringify({
       passwords: {
