@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 class Recipe extends Component {
   render() {
@@ -8,16 +8,16 @@ class Recipe extends Component {
         <img src="{image}" alt="" className="col-12" />
         <h5>{label}</h5>
         {userDbId ? (
-          <button name={userDbId} classname="btn">
+          <button name={userDbId} className="btn">
             Remove Recipe
           </button>
         ) : (
-          <button name={uri} classname="btn">
+          <button name={uri} className="btn">
             Remove Recipe
           </button>
         )}
       </div>
-    );
+    )
   }
 }
-export default Recipe;
+export default Recipe
