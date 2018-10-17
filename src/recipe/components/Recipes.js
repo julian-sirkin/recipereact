@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import Recipe from './Recipe'
 
- class Recipes extends Component {
+class Recipes extends Component {
   render() {
-    const { recipes } = this.props
+    const recipeCards = this.props.recipes.data.body.map(recipe => {
+      return (
+        <Recipe key={recipe.recipe.uri} recipe={recipe} />
+      )
+    })
     return (
-      <React.Fragment>
-          {recipes.map(recipe => (
-              <Recipe key={recipe.userDbId} recipe={recipipe} 
-          ))}
-      </React.Fragment>
+      <div className="d-flex flex-wrap">
+        {recipeCards}
+      </div>
     )
   }
 }
