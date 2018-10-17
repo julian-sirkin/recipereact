@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 const apiUrl = 'http://localhost:4741'
 import Recipes from './Recipes'
+import { withRouter } from 'react-router-dom'
+import { Route, Redirect } from 'react-router'
+
 class SearchRecipes extends Component {
   constructor() {
     super()
@@ -28,11 +31,15 @@ class SearchRecipes extends Component {
       recipes: response,
       haveRecipes: true
     })
+    this.props.history.push({
+      pathname: '/recipe-results',
+      state: this.state.recipes
+    })
   }
   render() {
-    const { recipes, searchParam} = this.state
+    const { recipes, searchParam, haveRecipes} = this.state
     return (
-      !this.state.haveRecipes ? (
+      <React.Fragment>
         <div className="card card-body text-center">
           <form onSubmit={this.searchForRecipe} action="">
             <div className="form-group">
@@ -42,7 +49,7 @@ class SearchRecipes extends Component {
             <button type="submit" className="button">Search</button>
           </form>
         </div>
-      ) : <Recipes recipes={recipes} />
+      </React.Fragment>
     )}
 }
-export default SearchRecipes
+export default withRouter(SearchRecipes)
