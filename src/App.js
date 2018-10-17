@@ -9,7 +9,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import SearchRecipes from './recipe/components/SearchRecipes.js'
-
+import ShowResults from './recipe/components/ShowResuts.js'
 
 class App extends Component {
   constructor () {
@@ -56,8 +56,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/search-recipes' render={() => (
+          <AuthenticatedRoute user={user} path='/search-recipes/' render={() => (
             <SearchRecipes />
+          )} />
+          <Route path='/recipe-results' render={() => (
+            <ShowResults setUser={this.setUser} />
           )} />
         </main>
       </React.Fragment>
