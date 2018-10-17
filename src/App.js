@@ -10,7 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import SearchRecipes from './recipe/components/SearchRecipes.js'
 import ShowResults from './recipe/components/ShowResuts.js'
-
+import GetUserRecipes from './recipe/components/getUserRecipes'
 class App extends Component {
   constructor () {
     super()
@@ -58,6 +58,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/search-recipes/' render={() => (
             <SearchRecipes />
+          )} />
+          <AuthenticatedRoute user={user} path='/user-recipes' render={() => (
+            <GetUserRecipes user={user} />
           )} />
           <Route path='/recipe-results' render={() => (
             <ShowResults setUser={this.setUser} />
