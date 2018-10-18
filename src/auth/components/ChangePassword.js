@@ -24,7 +24,6 @@ class ChangePassword extends Component {
 
     const { oldPassword, newPassword } = this.state
     const { flash, history, user } = this.props
-
     changePassword(this.state, user)
       .then(handleErrors)
       .then(() => flash(messages.changePasswordSuccess, 'flash-success'))

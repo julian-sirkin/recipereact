@@ -18,7 +18,6 @@ class GetUserRecipes extends Component {
 
 
   userRecipes = async (event) => {
-    console.log('I have been clicked')
     const user = this.props.user
     const userRecipesCall = await (
       fetch('http://localhost:4741/recipes', {
