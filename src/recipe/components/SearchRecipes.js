@@ -10,17 +10,17 @@ class SearchRecipes extends Component {
     super()
 
     this.state = {
-      searchParam: 'Search for Recipes',
+      searchParam: '',
       haveRecipes: false,
       recipes: []
     }
   }
 
-  handleChange = event =>
+  handleChange = event => {
     this.setState({
       searchParam: event.target.value
     })
-
+  }
   searchForRecipe = async (event) => {
     event.preventDefault()
     const recipeSearch = {recipe: {search: this.state.searchParam}}
@@ -33,7 +33,10 @@ class SearchRecipes extends Component {
     })
     this.props.history.push({
       pathname: '/recipe-results',
-      state: this.state.recipes
+      state: {
+        recipes: this.state.recipes,
+        user: this.props.user
+      }
     })
   }
   render() {
