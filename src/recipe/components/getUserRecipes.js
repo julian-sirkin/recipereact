@@ -19,15 +19,23 @@ class GetUserRecipes extends Component {
 
   userRecipes = async (event) => {
     const user = this.props.user
-    const userRecipesCall = await (
-      fetch('http://localhost:4741/recipes', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Token token=${user.token}`
-        }
-      })
-    )
+    console.log(user)
+    // const userRecipesCall = await (
+    //   fetch('http://localhost:4741/recipes', {
+    //     method: 'GET',
+    //     headers: {
+    //       'Authorization': `Token token=${user.token}`,
+    //       'Access-Control-Allow-Origin': '*'
+    //     }
+    //   })
+    // )
+    const userRecipesCall = await axios.get(apiUrl + '/recipes', {
+      headers: {
+        'Authorization': `Token token=${user.token}`,
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+
     this.setState ({
       recipes: userRecipesCall
     })
