@@ -57,13 +57,13 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/search-recipes/' render={() => (
-            <SearchRecipes />
+            <SearchRecipes user={user}/>
           )} />
           <AuthenticatedRoute user={user} path='/user-recipes' render={() => (
             <GetUserRecipes user={user} />
           )} />
-          <Route path='/recipe-results' render={() => (
-            <ShowResults setUser={this.setUser} />
+          <AuthenticatedRoute user={user} path='/recipe-results' render={() => (
+            <ShowResults user={user} />
           )} />
         </main>
       </React.Fragment>

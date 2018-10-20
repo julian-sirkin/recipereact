@@ -13,12 +13,14 @@ class ShowResults extends Component {
   redirectToSearch = () => this.props.history.push('/search-recipes/')
 
   render () {
-    const recipeArr = this.props.location.state
-    console.log(recipeArr)
+    const recipeArr = this.props.location.state.recipes
+    const user = this.props.location.state.user
+    console.log(recipeArr, 'recipes')
+    console.log(user, 'user')
     return (
       <React.Fragment>
         {recipeArr ? (
-          <Recipes recipes={recipeArr}/>
+          <Recipes user={user} recipes={recipeArr}/>
         ) : (
           <Redirect to='/search-recipes/' />
         ) }
